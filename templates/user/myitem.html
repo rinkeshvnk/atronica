@@ -1,0 +1,70 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+My Item
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+{% block 'main' %}
+<div class="cart-main-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wishlist-content">
+                   
+                        <div class="wishlist-title">
+                            <h2>My Item</h2>
+                        </div>
+                        
+                        <div class="single-login ">
+                            
+                        </div>
+
+                        <div class="wishlist-table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">Product Name</th>
+                                        <th class="product-price">Unit Price </th>
+                                        <th class="product-stock-stauts">Qty </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in itemdata %}
+                                    <tr>
+                                        <td class="product-thumbnail"><a href="#"><img src="{{row.product_id.img1}}" alt="man" /></a></td>
+                                        <td class="product-name"><a href="#">{{row.product_id.title}}</a></td>
+                                        <td class="product-price"><span class="amount">Rs. {{row.price}}</span></td>
+                                        <td class="product-stock-status"><span class="wishlist-in-stock">{{row.qty}}</span></td>
+                                       
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="wishlist-share">
+                                                <h4 class="wishlist-share-title">Share on:</h4>
+                                                <ul>
+                                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a class="email" href="#"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

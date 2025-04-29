@@ -1,0 +1,98 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Inquiry
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+
+{% block 'main' %}
+
+
+<!-- contact-area-start -->
+<div class="contact-area ptb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="contact-info text-center">
+                    <h3>Electrician Details</h3>
+                    <img src="{{electricaldata.img}}" alt="woman" style="height: 450px;"/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <br>
+                <br>
+                <h2 style="font-size: 20px;font-weight: bold;">{{electricaldata.name}}</h2>				
+                <ul>
+                    <li>
+                        <span>Rs. {{electricaldata.elec_price}}</span>
+                        tax incl.							
+                    </li>
+                    <br/>
+                    <li>
+                        <h1>Contact No.</h1><span>{{electricaldata.mobilenumber}}</span>
+                         
+                    </li>
+                    <br/>
+                    <li>
+                        <h1>About Electrician</h1>
+                        <span>{{electricaldata.aboutelectrician}}</span>
+                    </li>
+                    <br/>
+                    <li>
+                        <h1>Experience</h1>
+                        <span>{{electricaldata.experience}}</span>
+                    </li>
+                </ul>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                 {{ message }}
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              {% endfor %}
+                <form method="POST" action="/customadmin/inquries/insert">
+                    {% csrf_token %}
+                    <div class="contact-form">
+                    <h3><i class="fa fa-envelope-o"></i>Electrician Inquiry</h3>
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="single-form-3">
+                                <input type="hidden" value="{{electricaldata.elec_id}}" name="txtid"/>
+                                <input class="form-control" type="text" placeholder="Name" name="txtname"/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="single-form-3">
+                                <input type="text" class="form-control" placeholder="Mobile Number" name="txtmobileno"/>
+                            </div><br>
+                        </div>
+                        </div>
+                    
+                        <div class="single-form-3">
+                            <textarea placeholder="Message" class="form-control" name="txtmessage" cols="63" rows="5"></textarea>
+                        </div><br>
+
+                        <div class="single-login single-login-2">
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </div>
+
+                    </div>
+                </form>	
+            </div>
+        </div>
+    </div>
+</div>
+<!-- contact-area-end -->
+
+{% endblock %}

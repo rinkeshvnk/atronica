@@ -1,0 +1,469 @@
+{% load static  %}
+<!doctype html>
+<html class="no-js" lang="en">
+    
+<!-- Mirrored from htmldemo.net/legend/legend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Feb 2025 08:30:12 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block 'title' %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'user_assets/newicon.png' %}">
+
+		<!-- all css here -->
+		<!-- bootstrap v3.3.6 css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/bootstrap.min.css' %}">
+		<!-- animate css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/animate.css' %}">
+		<!-- jquery-ui.min css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/jquery-ui.min.css' %}">
+		<!-- meanmenu css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/meanmenu.min.css' %}">
+		<!-- owl.carousel css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/owl.carousel.css' %}">
+		<!-- font-awesome css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/font-awesome.min.css' %}">
+		<!-- material-design-iconic-font.css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/material-design-iconic-font.css' %}">
+		<!-- chosen.min.css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/chosen.min.css' %}">
+		<!-- nivo-slider.css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/nivo-slider.css' %}">
+		<!--flexslider.css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/flexslider.css' %}">
+		<!-- style css -->
+		<link rel="stylesheet" href="{% static 'user_assets/style.css' %}">
+		<!-- responsive css -->
+        <link rel="stylesheet" href="{% static 'user_assets/css/responsive.css' %}">
+		<!-- modernizr css -->
+        <script src="{% static 'user_assets/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+        {% block 'css' %}{% endblock %}
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <!-- header-area-start -->
+		<header>
+			<!-- header-top-start -->
+			<div class="header-top">
+				<div class="container">
+					<div class="row ptb-12 bb">
+						<div class="col-lg-6 col-md-6  col-12">
+							<div class="header-left-menu">
+								<ul>
+									{% if request.user.is_authenticated %}
+									<li><a href="#">My account<i class="fa fa-angle-down"></i></a>
+										<div class="submenu-top">
+											<ul>
+												<li><a href="/myprofile">My Profile</a></li>
+												<li><a href="/myorder">My order</a></li>
+												<li><a href="/changepassword">Change password</a></li>
+												<li><a href="/userlogout">Log out</a></li>
+											</ul>
+										</div>
+									</li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6  col-12">
+							<div class="links-nav">
+								{% if not request.user.is_authenticated %}
+								<ul>
+									<li><a href="/login"><i class="fa fa-map-marker"></i>Login</a></li>
+									<li><a href="/register"><i class="fa fa-cog"></i>Register</a></li>
+								</ul>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header-top-end -->
+			<!-- header-mid-area-start -->
+			<div class="header-mid-area ptb-30">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-12 col-12">
+							<div class="logo-area">
+								<a href="/"><img src="{% static 'user_assets/logo.png' %}" width="200" alt="logo" /></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-8  col-12">
+							<div class="search-area">
+								<form action="/searchresult">
+									<input id="searchBox" style="padding: 30px;" type="text" name="q" placeholder="Search entire store here ..." />
+									<div style="text-align: right;margin-top: 5px;">
+										<button id="startBtn" type="button"><i class="fa fa-microphone"></i> Voice Search</button>
+									</div>
+									<button type="submit" style="visibility: hidden;"><i class="fa fa-search"></i></button>
+									<p id="status"></p>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4  col-12">
+							<div class="header-user">
+								<a><i class="zmdi zmdi-local-shipping zmdi-hc-fw"></i>Free Shipping on Orders </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header-mid-area-end -->
+			<!-- header-menu-area-start -->
+			<div class="header-menu-area" id="header-sticky">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-9 col-md-12 col-12 d-none d-lg-block">
+							<div class="main-menu">
+								<nav>
+									<ul>
+										<li class="active"><a href="/">Home</a>
+										</li>
+										<li class="active"><a href="/shop">Shop</a>
+										</li>
+                                        <li class="active"><a href="/about">Who we are?</a>
+										</li>
+										<li class="active"><a href="/electrical">Our Electrician</a>
+										</li>
+										<li class="active"><a href="/article">Our Articles</a>
+										</li>
+										<li class="active"><a href="/faq">FAQ</a>
+										</li>
+                                        <li class="active"><a href="/contact">Contact Us</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-12 col-12">
+							<div class="cart-area">
+								<ul>
+									
+									<!-- <li><a href="#"><i class="fa fa-heart-o"></i></a></li> -->
+									<li><a href="/cart"><i class="fa fa-shopping-cart"></i></a>
+										<span class="cart-count"></span>
+										<div class="mini-cart-sub">
+											<div class="cart-product">
+											</div>
+											<div class="cart-totals">
+											</div>
+											<div class="cart-bottom">
+												<a href="/cart">Cart</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header-menu-area-end -->
+			<!-- mobile-menu-area-start -->
+			<div class="mobile-menu-area d-block d-lg-none">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="mobile-menu">
+								<nav id="mobile-menu-active">
+									<ul>
+										<li class="active"><a href="/">Home</a>
+										</li>
+										<li class="active"><a href="/shop">Shop</a>
+										</li>
+                                        <li class="active"><a href="/about">About</a>
+										</li>
+                                        <li class="active"><a href="/contact">Contact</a>
+										</li>
+										<li class="active"><a href="/electrical">Electrician</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- mobile-menu-area-end -->
+		</header>
+        <!-- header-area-end -->
+		{% block 'main' %}{% endblock %}
+		<!-- brand-area-start -->
+		<div class="brand-area">
+			<div class="container">
+				<div class="row">
+					<div class="brand-active bt-2 owl-carousel ptb-50">
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/1.png' %}" alt="brand" /></a>
+						</div>
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/2.png' %}" alt="brand" /></a>
+						</div>
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/3.png' %}" alt="brand" /></a>
+						</div>
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/4.png' %}" alt="brand" /></a>
+						</div>
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/5.png' %}" alt="brand" /></a>
+						</div>
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/6.png' %}" alt="brand" /></a>
+						</div>
+						<div class="single-brand">
+							<a href="#"><img src="{% static 'user_assets/img/brand/7.png' %}" alt="brand" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- brand-area-end -->
+		<!-- newsletter-area-start -->
+		<!-- <div class="newsletter-area ptb-30">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="newsletter-item">
+							<div class="newsletter-content ">
+								<h4>Newsletter</h4>
+							</div>
+							<div class="newsletter-form">
+								<form action="#">
+									<input type="text" placeholder="Enter your e-mail" />
+									<a href="#"><i class="fa fa-paper-plane"></i></a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- newsletter-area-end -->
+		<!-- footer-area-start -->
+		<footer>
+			<!-- footer-top-area-start -->
+			<div class="footer-top-area pt-80 pb-50">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-6  col-12">
+							<!-- single-footer-start -->
+							<div class="single-footer">
+								<!-- <div class="footer-logo mb-30">
+									<a href="#"><img src="{% static 'user_assets/logo.png' %}" alt="logo" /></a>
+								</div> -->
+								<p>Contact Us</p>
+								<div class="footer-address">
+									<ul>
+										<li><i class="fa fa-map-marker"></i>address : Karon Infotech  Adajan Gam, Pal Gam, Surat, Gujarat 395009</li>
+										<li><i class="fa fa-envelope"></i>Email :atronica@gmail.com</li>
+										<li><i class="fa fa-mobile"></i>Phone :+91 555 555 0001</li>
+									</ul>
+								</div>
+								<div class="social-link">
+									<ul>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-rss"></i></a></li> -->
+										<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<!-- single-footer-end -->
+						</div>
+						<div class="col-lg-3 col-md-6  col-12">
+							<!-- single-footer-start -->
+							<div class="single-footer">
+								<div class="footer-title">
+									<h4>Most Visited</h4>
+								</div>
+								<div class="footer-menu">
+									<ul>
+										<li><a href="#">Top sellers</a></li>
+										<li><a href="/shop">Our stores</a></li>
+										<li><a href="/shop">Our Electrician</a></li>
+										<li><a href="/contact">Contact us</a></li>
+										<li><a href="/contact">FAQ</a></li>
+										<li><a href="/about">Who We Are?</a></li>
+										
+									</ul>
+								</div>
+							</div>
+							<!-- single-footer-end -->
+						</div>
+						<div class="col-lg-3 col-md-6  col-12">
+							<!-- single-footer-start -->
+							<div class="single-footer">
+								<div class="footer-title">
+									<h4>My Account</h4>
+								</div>
+								<div class="footer-menu">
+									<ul>
+										<li><a href="/myprofile">My Profile</a></li>
+										<li><a href="/cart">My cart</a></li>
+										<li><a href="/checkout">checkout</a></li>
+										<li><a href="/myorder">My orders</a></li>	
+									</ul>
+								</div>
+							</div>
+							<!-- single-footer-end -->
+						</div>
+						<div class="col-lg-3 col-md-6  col-12">
+							<!-- single-footer-start -->
+							<div class="single-footer">
+								<div class="footer-title">
+									<h4>Category</h4>
+								</div>
+								<div class="footer-menu">
+									<ul>
+										<li><a href="/categoryproduct/19">Headphones</a></li>
+										<li><a href="/categoryproduct/20">Mobiles</a></li>
+										<li><a href="/categoryproduct/21">Photo & Camera</a></li>
+										<li><a href="/categoryproduct/22">Computers</a></li>
+										<li><a href="/categoryproduct/19">TV & Audio</a></li>
+									</ul>
+								</div>
+							</div>
+							<!-- single-footer-end -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- footer-top-area-end -->
+			<!-- footer-bottom-area-start -->
+			<div class="footer-bottom-area ptb-20">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-6  col-12">
+							<div class="copy-right">
+								<p>&copy; Atronica 2025 Made With <i class="fa fa-heart text-danger mx-1"></i> by <a target="_blank" rel="noopener"> Atronica</a></p>
+							</div>
+						</div>
+						<!-- <div class="col-lg-6 col-md-6  col-12">
+							<div class="payment-area">
+								<a href="#"><img src="{% static 'user_assets/img/1.png' %}" alt="payment" /></a>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<!-- footer-bottom-area-end -->
+		</footer>
+		<!-- footer-area-end -->
+	
+		
+
+		<!-- all js here -->
+		<!-- jquery latest version -->
+        <script src="{% static 'user_assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'user_assets/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+		<!-- bootstrap js -->
+        <script src="{% static 'user_assets/js/bootstrap.bundle.min.js' %}"></script>
+		<!-- owl.carousel js -->
+        <script src="{% static 'user_assets/js/owl.carousel.min.js' %}"></script>
+		<!-- meanmenu js -->
+        <script src="{% static 'user_assets/js/jquery.meanmenu.js' %}"></script>
+		<!-- jquery-ui js -->
+        <script src="{% static 'user_assets/js/jquery-ui.min.js' %}"></script>
+		<!-- wow js -->
+        <script src="{% static 'user_assets/js/wow.min.js' %}"></script>
+		<!-- chosen.jquery.min.js -->
+        <script src="{% static 'user_assets/js/chosen.jquery.min.js' %}"></script>
+		<!-- jquery.nivo.slider.js -->
+        <script src="{% static 'user_assets/js/jquery.nivo.slider.js' %}"></script>
+		<!-- jquery.countdown.min.js -->
+        <script src="{% static 'user_assets/js/jquery.countdown.min.js' %}"></script>
+		<!-- jquery.flexslider.js -->
+        <script src="{% static 'user_assets/js/jquery.flexslider.js' %}"></script>
+		<!-- jquery.counterup.min.js -->
+        <script src="{% static 'user_assets/js/jquery.counterup.min.js' %}"></script>
+		<!-- waypoints.min.js -->
+        <script src="{% static 'user_assets/js/waypoints.min.js' %}"></script>
+		<!-- plugins js -->
+        <script src="{% static 'user_assets/js/plugins.js' %}"></script>
+		<!-- main js -->
+        <script src="{% static 'user_assets/js/main.js' %}"></script>
+		<script>
+			$(document).ready(function(){
+				$.ajax({
+					url:"/loadajaxcart",
+					method:"POST",
+					success:function(response)
+					{
+						var json = response;
+						var op="";
+						$.each(json.cartdata,(key,row)=>{
+							op=op+`<div class="single-cart">
+									<div class="cart-img">
+										<a href="#"><img src="${row.image}" alt="book" /></a>
+									</div>
+									<div class="cart-info">
+										<h5><a href="#">${row.title}</a></h5>
+										<p>${row.qty} x Rs. ${row.total}</p>
+									</div>
+								</div>`;
+						});
+						$(".cart-product").html(op);
+						$(".cart-count").html(json.cartcount);
+						$(".cart-totals").html(`<h5>Total <span>Rs. ${json.finaltotal}</span></h5>`)
+					},
+					error:function(error)
+					{
+						console.log(error);
+					}
+				});
+			});
+		</script>
+		<script>
+			// Check if the browser supports the Web Speech API
+			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+			if (SpeechRecognition) {
+			const recognition = new SpeechRecognition();
+
+			recognition.continuous = false;  // Only capture a single sentence
+			recognition.interimResults = false;  // Wait for final result
+			recognition.lang = 'en-US';
+
+			const startBtn = document.getElementById('startBtn');
+			const searchBox = document.getElementById('searchBox');
+			const status = document.getElementById('status');
+
+			startBtn.addEventListener('click', () => {
+				recognition.start();
+				//status.textContent = 'Listening... 🎧';
+			});
+
+			recognition.onresult = (event) => {
+				const transcript = event.results[0][0].transcript;
+				searchBox.value = transcript;
+				//status.textContent = `You said: "${transcript}"`;
+				// You could now trigger a search with the value
+				// e.g., performSearch(transcript);
+			};
+
+			recognition.onerror = (event) => {
+				//status.textContent = 'Error: ' + event.error;
+			};
+
+			recognition.onend = () => {
+				//status.textContent += ' (stopped listening)';
+			};
+			} else {
+			alert("Sorry, your browser doesn't support speech recognition.");
+			}
+
+		</script>
+        {% block 'js' %}{% endblock %}
+    </body>
+
+<!-- Mirrored from htmldemo.net/legend/legend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Feb 2025 08:30:12 GMT -->
+</html>

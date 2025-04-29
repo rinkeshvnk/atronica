@@ -1,0 +1,262 @@
+{% extends 'admin/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Dashboard
+{% endblock %}
+{% block 'css' %}{% endblock %}
+{% block 'js' %}
+<script>
+    
+  // ================================ Revenue Report Chart Start ================================ 
+  var options = {
+      series: [{
+        name: 'Revenue',
+        data: [
+        {% for item in sales_data %}      
+        {{item.total_sales}},
+        {% endfor %}
+    ]
+      }],
+      colors: ['#FF9F29'],
+      legend: {
+          show: false 
+      },
+      chart: {
+        type: 'bar',
+        height: 250,
+        toolbar: {
+          show: false
+        },
+      },
+      grid: {
+          show: true,
+          borderColor: '#D1D5DB',
+          strokeDashArray: 4, // Use a number for dashed style
+          position: 'back',
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          columnWidth: 10,
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+      },
+      xaxis: {
+        categories: [
+        {% for item in sales_data %}    
+        '{{item.month}}',
+        {% endfor %}
+    ],
+      },
+      yaxis: {
+        categories: ['0', '5000', '10,000', '20,000', '30,000', '50,000', '60,000', '60,000', '70,000', '80,000', '90,000', '100,000'],
+      },
+      fill: {
+        opacity: 1,
+        width: 18,
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#paymentStatusChart"), options);
+    chart.render();
+  // ================================ Revenue Report Chart End ================================ 
+</script>
+{% endblock %}
+
+{% block 'main' %}
+<div class="dashboard-main-body">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+  <h6 class="fw-semibold mb-0">Dashboard</h6>
+  <ul class="d-flex align-items-center gap-2">
+    <li class="fw-medium">
+      <a href="index-2.html" class="d-flex align-items-center gap-1 hover-text-primary">
+        <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>-</li>
+    <li class="fw-medium">Electronic Store</li>
+  </ul>
+</div>
+    
+    <div class="row gy-4">
+        <div class="col-xxl-12">
+            <div class="card radius-8 border-0">
+                <div class="row">
+                    <div class="col-xxl-6 pe-xxl-0">
+                        <div class="card-body p-24">
+                            <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between">
+                                <h6 class="mb-2 fw-bold text-lg">Revenue Report</h6>
+                              
+                            </div> 
+                            <div class="mt-40">
+                                <div id="paymentStatusChart" class="margin-16-minus"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6">
+                        <div class="row h-100 g-0">
+                            <div class="col-6 p-0 m-0">
+                                <div class="card-body p-24 h-100 d-flex flex-column justify-content-center border border-top-0">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+                                        <div>
+                                            <span class="mb-12 w-44-px h-44-px text-primary-600 bg-primary-light border border-primary-light-white flex-shrink-0 d-flex justify-content-center align-items-center radius-8 h6 mb-12">
+                                                <iconify-icon icon="fa-solid:box-open" class="icon"></iconify-icon>  
+                                            </span>
+                                            <span class="mb-1 fw-medium text-secondary-light text-md">Total Products</span>
+                                            <h6 class="fw-semibold text-primary-light mb-1">{{allproduct}}</h6>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                            <div class="col-6 p-0 m-0">
+                                <div class="card-body p-24 h-100 d-flex flex-column justify-content-center border border-top-0 border-start-0 border-end-0">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+                                        <div>
+                                            <span class="mb-12 w-44-px h-44-px text-yellow bg-yellow-light border border-yellow-light-white flex-shrink-0 d-flex justify-content-center align-items-center radius-8 h6 mb-12">
+                                                <iconify-icon icon="flowbite:users-group-solid" class="icon"></iconify-icon>  
+                                            </span>
+                                            <span class="mb-1 fw-medium text-secondary-light text-md">Total Customer</span>
+                                            <h6 class="fw-semibold text-primary-light mb-1">{{allusers}}</h6>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                            <div class="col-6 p-0 m-0">
+                                <div class="card-body p-24 h-100 d-flex flex-column justify-content-center border border-top-0 border-bottom-0">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+                                        <div>
+                                            <span class="mb-12 w-44-px h-44-px text-lilac bg-lilac-light border border-lilac-light-white flex-shrink-0 d-flex justify-content-center align-items-center radius-8 h6 mb-12">
+                                                <iconify-icon icon="majesticons:shopping-cart" class="icon"></iconify-icon>  
+                                            </span>
+                                            <span class="mb-1 fw-medium text-secondary-light text-md">Total Orders</span>
+                                            <h6 class="fw-semibold text-primary-light mb-1">{{allorders}}</h6>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-6 p-0 m-0">
+                                <div class="card-body p-24 h-100 d-flex flex-column justify-content-center border border-top-0 border-start-0 border-end-0 border-bottom-0">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+                                        <div>
+                                            <span class="mb-12 w-44-px h-44-px text-pink bg-pink-light border border-pink-light-white flex-shrink-0 d-flex justify-content-center align-items-center radius-8 h6 mb-12">
+                                                <iconify-icon icon="ri:discount-percent-fill" class="icon"></iconify-icon>  
+                                            </span>
+                                            <span class="mb-1 fw-medium text-secondary-light text-md">Total Sales</span>
+                                            <h6 class="fw-semibold text-primary-light mb-1">Rs.{{total_payment_sum_value}}</h6>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-xxl-12 col-lg-12">
+            <div class="card h-100">
+                <div class="card-body p-24">
+                    <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between mb-20">
+                        <h6 class="mb-2 fw-bold text-lg mb-0">Recent Orders</h6>
+                        <a href="/customadmin/order/view" class="text-primary-600 hover-text-primary d-flex align-items-center gap-1">
+                            View All
+                            <iconify-icon icon="solar:alt-arrow-right-linear" class="icon"></iconify-icon>
+                        </a>
+                    </div>
+                    <div class="table-responsive scroll-sm">
+                        <table class="table bordered-table mb-0">
+                        <thead>
+                            <tr>
+                            <th scope="col">Users</th>
+                            <th scope="col">Transaction number</th>
+                            <th scope="col">City Name</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col" class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in orderdata %}
+                            <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="text-lg text-secondary-light fw-semibold flex-grow-1">{{row.user_id.username}}</span>
+                                </div>
+                            </td>
+                            <td>{{row.transaction_number}}</td>
+                            <td>{{row.city_id.city_name}}</td>
+                            <td>{{ row.orderdatetime }}</td>
+                            <td>Rs. {{ row.total_payment }}</td>
+                            <td class="text-center"> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">{{ row.status }}</span> </td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="col-xxl-12">
+          <div class="card h-100">
+              <div class="card-body p-24">
+                  <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between mb-20">
+                      <h6 class="mb-2 fw-bold text-lg mb-0">Top Selling Product</h6>
+                      <a href="/customadmin/products/view" class="text-primary-600 hover-text-primary d-flex align-items-center gap-1">
+                          View All
+                          <iconify-icon icon="solar:alt-arrow-right-linear" class="icon"></iconify-icon>
+                      </a>
+                  </div>
+                  <div class="table-responsive scroll-sm">
+                      <table class="table bordered-table mb-0">
+                        <thead>
+                            <tr>
+                              <th scope="col">Items</th>
+                              <th scope="col">Price</th>
+                              <th scope="col" class="text-center">Total Orders</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in top_5_selling_products %}
+                            <tr>
+                              <td>
+                                  <div class="d-flex align-items-center">
+                                      <img src="{{row.img1}}" alt="" width="100" class="flex-shrink-0 me-12 radius-8 me-12">
+                                      <div class="flex-grow-1">
+                                        <h6 class="text-md mb-0 fw-normal">{{ row.title }}</h6>
+                                        <span class="text-sm text-secondary-light fw-normal">{{ row.title }}</span>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td>Rs. {{ row.sell_price }}</td>
+                              <td class="text-center"> 
+                                <span class="bg-success-focus text-success-main px-32 py-4 rounded-pill fw-medium text-sm">{{ row.sell }}</span> 
+                              </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+       
+    </div>
+    
+  </div>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Electrical
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+
+{% block 'main' %}
+<div class="shop">
+    <div class="breadcrumb-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content text-center">
+                        <div class="breadcrumb-title">
+                            <h3><a href="#">ELECTRICIAN</a></h3>
+                        </div>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-home"></i></a></li>
+                            <li class="active"><a href="/"><i class="fa fa-angle-right"></i>Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="shop-main-area mb-70">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-12">
+                <!-- shop-right-area -->
+                <div class="shop-right-area">
+                    <div class="page-heading mb-10">
+                        <div class="cart-name">
+                            <span>Electrician </span>
+                        </div>
+                       
+                    </div>
+                </div>
+                <!-- shop-right-area -->
+                <!-- tab-area-start -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="th">
+                        <div class="row">
+                            <!-- single-product-start -->
+                            {% for row in electricaldata %}
+                            <div class="single-elec mb-30">
+                                <div class="product-img">
+                                    <a href="#">
+                                        <img src="{{row.img}}" style="height: 300px;width: 100%;" alt="product" class="first" />
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <h3><a href="/elecdetail/{{row.elec_id}}">{{ row.name }}</a></h3>
+                                    <div class="product-rating mb-10">
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                    </div>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li class="new-price">Rs. {{ row.elec_price }}</li>
+                                        </ul>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list">
+                        {% for row in electricaldata %}
+                        <!-- shop-product-start -->
+                        <div class="shop-product bb-5">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5  col-12">
+                                    <!-- single-product-start -->
+                                    <div class="product-wrapper-2">
+                                        <div class="product-img">
+                                            <a href="#">
+                                                <img src="{{row.img}}" alt="product" class="first" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- single-product-end -->
+                                </div>
+                                <div class="col-lg-7 col-md-7  col-12">
+                                    <!-- single-details-start -->
+                                    <div class="product-details-2">
+                                        <h3><a href="/elecdetail/{{row.elec_id}}">{{row.name}}</a></h3>
+                                        <div class="product-rating mb-10 color">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <div class="product-price">
+                                            <ul>
+                                                <li class="new-price">Rs. {{row.elec_price}}</li>
+                                            </ul>
+                                        </div>
+                                        <p> {{row.aboutelectrician}}</p>
+                                        <div class="action-inner mt-20">
+                                            <div class="product-button-3">
+                                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="/elecdetail/{{row.elec_id}}"><i class="fa fa-eye"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>										
+                                    <div class="availability">
+                                        <span>In stock</span>
+                                    </div>
+                                    <!-- single-details-end -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- shop-product-end -->
+                        {% endfor %}
+                       
+                    </div>	
+                </div>
+                <!-- tab-area-end -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

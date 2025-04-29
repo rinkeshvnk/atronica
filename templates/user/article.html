@@ -1,0 +1,145 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Article
+{% endblock %}
+
+<!-- 
+Feedback
+
+contactid
+name
+email
+subject
+message
+-->
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+
+{% block 'main' %}
+<!-- breadcrumb-area-start -->
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="/">Home</a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i>Our Article</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- blog-main-area-start -->
+<div class="blog-main-area">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="blog-main-area mb-70">
+                    <!-- single-blog-main-start -->
+                    <div class="single-blog-main mb-40">
+                        <div class="post-thumbnail mb-50">
+                            <a href="#"><img src="{% static 'user_assets/img/banner/shop_online.jpg' %}" alt="banner" /></a>
+                        </div>
+                        <div class="postinfo-wrapper">
+                            <div class="post-date">
+                                <span class="day">12</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="post-info">
+                                <h1><a href="blog-details.html">Why Shop from an Online Electronics Store?</a></h1>
+                                <div class="entry-meta">
+                                    <span>Posted by<a href="#">Atronica</a></span>
+                                </div>
+                                <p>Convenience: Shop Anytime, Anywhere One of the most significant benefits of online shopping is the convenience it offers. Unlike traditional brick-and-mortar stores, online electronics stores are open 24/7, giving consumers the flexibility to shop when it suits them best. Whether you’re browsing on your computer, tablet, or smartphone, shopping for electronics can be done from the comfort of your home, office, or even while traveling.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single-blog-main-end -->
+                    <!-- single-blog-main-start -->
+                    <div class="single-blog-main mb-40">
+                        <div class="post-thumbnail mb-50">
+                            <a href="#"><img src="{% static 'user_assets/img/banner/36.jpg' %}" alt="banner" /></a>
+                        </div>
+                        <div class="postinfo-wrapper">
+                            <div class="post-date">
+                                <span class="day">12</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="post-info">
+                                <h1><a href="blog-details.html">The Future of Electrical Shopping: Smart, Digital, and Sustainable</a></h1>
+                                <div class="entry-meta">
+                                    <span>Posted by<a href="#">Atronica</a></span>
+                                </div>
+                                <p>The electrical industry is at a crossroads, driven by technological advancements, growing environmental awareness, and shifting consumer expectations. As the world moves towards sustainability and digitalization, so too is the way we shop for electrical supplies. Online electrician stores are evolving rapidly, integrating cutting-edge technology to meet the demands of a smarter, more eco-conscious future.
+
+                                    In this section, we will explore the future of electrical shopping, focusing on the key trends shaping the industry: smart products, digital shopping experiences, and sustainability.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single-blog-main-end -->
+                    <!-- single-blog-main-start -->
+                    <div class="single-blog-main mb-40">
+                        <div class="post-thumbnail mb-50">
+                            <a href="#"><img src="{% static 'user_assets/img/banner/37.jpg' %}" alt="banner" /></a>
+                        </div>
+                        <div class="postinfo-wrapper">
+                            <div class="post-date">
+                                <span class="day">15</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="post-info">
+                                <h1><a href="#">Why Digital Shopping is the Future</a></h1>
+                                <div class="entry-meta">
+                                    <span>Posted by<a href="#">Atronica</a></span>
+                                </div>
+                                <p>The digital shopping experience offers unparalleled convenience, accessibility, and efficiency. Online platforms can provide an extensive range of products, ensure competitive pricing, and allow for faster processing and delivery. With and virtual support enhancing the experience, the future of electrical shopping is increasingly smart and customer-centric.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single-blog-main-end -->
+                    <!-- single-blog-main-start -->
+                    <div class="single-blog-main mb-40">
+                        <div class="post-thumbnail mb-50">
+                            <a href="#"><img src="{% static 'user_assets/img/banner/store.jpg' %}" alt="banner" /></a>
+                        </div>
+                        <div class="postinfo-wrapper">
+                            <div class="post-date">
+                                <span class="day">15</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="post-info">
+                                <h1><a href="#">Why Smart Products Are the Future</a></h1>
+                                <div class="entry-meta">
+                                    <span>Posted by<a href="#">Atronica</a></span>
+                                </div>
+                                <p>Smart products are undeniably shaping the future of technology and the electrical industry. They are not only making life more convenient and efficient but also contributing to a more sustainable and eco-conscious world. With continued advancements in energy efficiency, we can expect smart products to become even more integral to our homes, businesses, and everyday lives.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single-blog-main-end -->
+                    <!-- pagination-area-start -->
+                    
+                    <!-- pagination-area-end -->
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<!-- blog-main-area-end -->
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Product Details
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+{% block 'main'%}
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="/">Home</a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i>product-details</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- product-details-area-start -->
+<div class="product-details-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-12">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="{{productdata.img1}}">
+                          <img src="{{productdata.img1}}" alt="woman" />
+                        </li>
+                        <li data-thumb="{{productdata.img2}}">
+                          <img src="{{productdata.img2}}" alt="woman" />
+                        </li>
+                        <li data-thumb="{{productdata.img3}}">
+                          <img src="{{productdata.img3}}" alt="woman" />
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-12">
+                <div class="product-info-main">
+                    <div class="page-title">
+                        <h1>{{productdata.title}}</h1>
+                    </div>
+                    <!-- <div class="comments_advices">
+                        <a href="#">Write a review </a>
+                    </div> -->
+                    
+                    <div class="product-info-price">
+                        <div class="price-final">
+                            <span>Rs. {{productdata.sell_price}} <span class="tax">tax incl.</span></span>
+                        </div>
+                    </div>
+                    <div class="short_description_block">
+                        <p>{{productdata.specification}}</p>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    <form method="POST" action="/addtocart">
+                        {% csrf_token %}
+                    <div class="product-add-form">
+                            <div class="quality-button">
+                                <label></label>
+                                <input class="qty" name="qty" type="number" value="1" min="1">
+                                <input type="hidden" class="qty" name="price" type="text" value="{{productdata.sell_price}}">
+                                <input type="hidden" class="qty" name="pid" type="text" value="{{productdata.product_id}}">
+                            </div>
+                    </div>
+                    <div class="box-cart-bottom">
+                        <div class="add_to_cart">
+                            <button type="submit">Add to cart</button>
+                        </div>
+                        <div class="add-to-links-2">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                               </ul>
+                        </div>
+                    </div>
+                   
+                    </div>
+
+                </form>
+               
+                <h2>Check Delivery : </h2>
+                    <form method="POST" action="/checkpincode/{{productdata.product_id}}">
+                        {% csrf_token %}
+                        <div class="d-flex align-items-center">
+                            <div class="#">
+                                <label>Pincode</label>
+                                <input type="text"  name="txtpincode"/>
+                            </div>
+                            <div class="#">
+                                <button class="btn btn-dark ms-2" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                {% else %}
+                <h2>Please login first to add item to cart.</h2>
+                {% endif %}
+                    <div class="field-limiter-2">
+                        
+                        <div class="control">
+                            <!-- chosen-start -->
+                            <!-- <select data-placeholder="Default Sorting" style="width:50px;" class="chosen-select-2" tabindex="1">
+                                 <option value="Sorting">s</option>
+                                 <option value="popularity">l</option>
+                                 <option value="rating">k</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>	
+    </div>
+</div>
+<!-- product-details-area-end -->
+<!-- more-info-area-start -->
+<div class="more-info-area pt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- tab-menu-start -->
+                <div class="tab-menu mb-40 text-center ">
+                    <ul class="nav">
+                        <li><a class="active" href="#More" data-bs-toggle="tab">More info </a></li>
+                        <li><a href="#Data"  data-bs-toggle="tab">Specification</a></li>
+                        <!-- <li><a href="#Reviews" data-bs-toggle="tab">Reviews</a></li> -->
+                    </ul>
+                </div>
+                <!-- tab-menu-end -->
+            </div>
+        </div>
+        <!-- tab-area-start -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="More">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rate">
+                            <p>{{productdata.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="Data">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-product-box">
+                           <p>{{productdata.specification}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="tab-pane fade" id="Reviews">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="review-title">
+                            <a>Be the first to write your review!</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- tab-area-end -->
+    </div>
+</div>
+<!-- more-info-area-end -->
+<!-- pos_new_product-area-start -->
+<div class="pos_new_product ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title mb-30">
+                    <h2><span> 0 </span>ther products in the same category: </h2>
+                </div>
+            </div>
+        </div>	
+        <div class="product-active-3 owl-carousel">
+            <!-- single-product-start -->
+            {% for row in realateddata %}
+            <div class="single-product">
+                <div class="product-img">
+                    <a href="#">
+                        <img src="{{row.img2}}" alt="product" class="first" />
+                        <img src="{{row.img2}}" alt="product" class="second" />
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3><a href="/productdetail/{{row.product_id}}">{{row.title}}</a></h3>
+                    <div class="product-rating mb-10">
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                    </div>
+                    <div class="product-price">
+                        <ul>
+                            <li class="new-price">Rs. {{row.sell_price}}</li>
+                        </ul>
+                    </div>
+                    <div class="add-to-links mt-15">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- single-product-end -->
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

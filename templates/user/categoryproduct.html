@@ -1,0 +1,103 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Category
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+{% block 'main'%}
+<div class="shop">
+    <div class="breadcrumb-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content text-center">
+                        <div class="breadcrumb-title">
+                            <h3><a href="#">SHOP</a></h3>
+                        </div>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-home"></i></a></li>
+                            <li class="active"><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+    <!-- shop-main-area-start -->
+    <div class="shop-main-area mb-70">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <!-- shop-right-area -->
+                    <div class="shop-right-area">
+                        <div class="page-heading mb-10">
+                            
+                            
+                        </div>
+                        <div class="page-bar mb-30">
+                            <div class="shop-tab">
+                                <!-- tab-menu-start -->
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- shop-right-area -->
+                    <!-- tab-area-start -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="th">
+                            <div class="row">
+                                <!-- single-product-start -->
+                                    {% for row in productdata %}
+                                <div class="single-product mb-30">
+                                    <div class="product-img">
+                                        <a href="#">
+                                            <img src="{{row.img1}}" alt="product" class="first" />
+                                            <img src="{{row.img2}}" alt="product" class="second" />
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3><a href="/productdetail/{{row.product_id}}">{{row.title}}</a></h3>
+                                        <div class="product-rating mb-10">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <div class="product-price">
+                                            <ul>
+                                                <li class="new-price">Rs. {{row.sell_price}}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="add-to-links mt-15">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <!-- <li><a href="#"><i class="fa fa-heart-o"></i></a></li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                              
+                            </div>
+                        </div>	
+                    </div>
+                    <!-- tab-area-end -->
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- shop-main-area-end -->
+    <!-- brand-area-start -->
+    
+    </div>
+{% endblock%}

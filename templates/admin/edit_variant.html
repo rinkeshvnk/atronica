@@ -1,0 +1,194 @@
+{% extends 'admin/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Variant Add
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+<script>
+  $("#form").validate({
+    rules:
+    {
+      txtproductname:
+      {
+        required:true
+      },
+      txtvideourl:
+      {
+        required:true
+      },
+      retailprice:
+      {
+        required:true
+      },
+      sellprice:
+      {
+        required:true
+      },
+      txtdescription:
+      {
+        required:true
+      },
+      packaging:
+      {
+        required:true
+      }
+    },
+    messages:
+    {
+      txtproductname:
+      {
+        required:"Please enter product name"
+      },
+      image1:
+      {
+        required:"Please select variant image"
+      },
+      image2:
+      {
+        required:"Please select variant image"
+      },
+      image3:
+      {
+        required:"Please select variant image"
+      },
+      txtvideourl:
+      {
+        required:"Please enter video url"
+      },
+      retailprice:
+      {
+        required:"Please enter retail price"
+      },
+      sellprice:
+      {
+        required:"Please enter sell price"
+      },
+      txtdescription:
+      {
+        required:"Please enter description"
+      },
+      packaging:
+      {
+        required:"Please enter packaging"
+      }
+      
+    }
+  });
+</script>
+{% endblock %}
+
+{% block 'main' %}
+<div class="dashboard-main-body">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+  <h6 class="fw-semibold mb-0">Edit Variant</h6>
+  <ul class="d-flex align-items-center gap-2">
+    <li class="fw-medium">
+      <a href="/customadmin/dashboard" class="d-flex align-items-center gap-1 hover-text-primary">
+        <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>-</li>
+    <li class="fw-medium">Edit Variant</li>
+  </ul>
+</div>
+    
+    <div class="row gy-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+                <h5 class="card-title mb-0">Edit Variant</h5>
+                <a href="/customadmin/variant/view" class="btn btn-neutral-900 text-base radius-8 px-20 py-11">View</a>
+            </div>
+          </div>
+          <div class="card-body">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <form method="POST" id="form" enctype="multipart/form-data" action="/customadmin/variant/update/{{data.variant_id}}">
+              {% csrf_token %}
+              <div class="row gy-3">
+                <div class="col-12">
+                    <label class="form-label">Product Name</label>
+                    <select class="form-control" name="txtproduct">
+                      {% for row in product %}
+                        <option {% if data.product_id.product_id == row.product_id %} selected {% endif %}value="{{row.product_id}}">{{row.title}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                   
+            
+
+              <div class="col-12">
+                <label class="form-label">Img 1</label>
+                <input type="file" name="image1" class="form-control"/>
+                <br/>
+                <img src="{{ data.img1 }}" width="50">
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Img 2</label>
+                <input type="file" name="image2" class="form-control"/>
+                <br/>
+                <img src="{{ data.img2 }}" width="50">
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Img 3</label>
+                <input type="file" name="image3" class="form-control"/>
+                <br/>
+                <img src="{{ data.img3 }}" width="50">
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Video url</label>
+                <input type="text" value="{{data.video_url}}" name="txtvideourl" class="form-control" >
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Retail Price</label>
+                <input type="text" value="{{data.retail_price}}" name="retailprice" class="form-control" >
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Sell Price</label>
+                <input type="text" value="{{data.sell_price}}" name="sellprice" class="form-control" >
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea name="txtdescription" class="form-control" rows="4" cols="50" placeholder="Enter a Description...">{{data.variant_description}}</textarea>
+              </div> 
+              
+              
+
+              <div class="col-12">
+                <label class="form-label">Packaging</label>
+                <input type="text" value="{{data.packaging}}" name="packaging" class="form-control" >
+              </div>
+
+              
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary-600">Update</button>
+              </div>
+              </div>
+            </form>  
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}

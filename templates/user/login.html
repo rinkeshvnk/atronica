@@ -1,0 +1,101 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Login
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+{% block 'js' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+<script>
+  $("#form").validate({
+    rules:
+    {
+      txtloginemail:
+      {
+        required:true
+      },
+      txtloginpassword:
+      {
+        required:true
+      }
+    },
+    messages:
+    {
+        txtloginemail:
+      {
+        required:"Please Enter Email "
+      },
+      txtloginpassword:
+      {
+        required:"Please Enter Password"
+      }
+    }
+  });
+</script>
+{% endblock %}
+
+
+{% block 'main' %}
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="#">Home</a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i>Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- user-login-area-start -->
+<div class="user-login-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="login-title text-center mb-30">
+                    <h2>Login</h2>
+                    <p>Welcome Back, Shopper! <br>Access your account with your email and password</p>
+                </div>
+            </div>
+            <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3  col-12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                <form method="POST" id="form" action="/checkuserlogin">
+                {% csrf_token %}
+                <div class="login-form">
+                    <div class="single-login">
+                        <label>Email<span>*</span></label>
+                        <input type="text"  name="txtloginemail"/>
+                    </div>
+                    <div class="single-login">
+                        <label>Passwords <span>*</span></label>
+                        <input type="text"  name="txtloginpassword"/>
+                    </div>
+                    <div class="single-login single-login-2">
+                        <button type="submit" class="btn btn-dark btn-block">Login</button>
+                    </div>
+                    <a href="{% url 'password_reset' %}">Lost your password?</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- user-login-area-end -->
+
+{% endblock %}

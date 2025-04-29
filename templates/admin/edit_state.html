@@ -1,0 +1,89 @@
+{% extends 'admin/master.html' %}
+{% load static  %}
+{% block 'title' %}
+State Edit
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+<script>
+  $("#form").validate({
+    rules:
+    {
+      txtstatename:
+      {
+        required:true
+      }
+      
+    },
+    messages:
+    {
+      txtstatename:
+      {
+        required:"Please enter state name"
+      }
+      
+    }
+  });
+</script>
+{% endblock %}
+
+{% block 'main' %}
+<div class="dashboard-main-body">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+  <h6 class="fw-semibold mb-0">Manage State</h6>
+  <ul class="d-flex align-items-center gap-2">
+    <li class="fw-medium">
+      <a href="/customadmin/dashboard" class="d-flex align-items-center gap-1 hover-text-primary">
+        <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>-</li>
+    <li class="fw-medium">Edit State</li>
+  </ul>
+</div>
+    
+    <div class="row gy-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+                <h5 class="card-title mb-0">Edit State</h5>
+                <a href="/customadmin/state/view" class="btn btn-neutral-900 text-base radius-8 px-20 py-11">View</a>
+            </div>
+          </div>
+          <div class="card-body">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <form method="POST" id="form" action="/customadmin/state/update/{{data.state_id}}">
+              {% csrf_token %}
+              <div class="row gy-3">
+                <div class="col-12">
+                    <label class="form-label">State Name</label>
+                    <input type="text" value="{{data.state_name}}" name="txtstatename" id="txtstatename" class="form-control" >
+                  </div>
+                
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary-600">Update</button>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}

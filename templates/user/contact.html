@@ -1,0 +1,102 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Contact 
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+{% block 'main' %}
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="/">Home</a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i>contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- googleMap-area-start -->
+<div class="map-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <iframe class="map-size"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.9741436446834!2d72.77867257424425!3d21.19318608211277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c28ce1f89cd%3A0xd016bfc2b2f196d9!2sKaron%20Infotech!5e0!3m2!1sen!2sin!4v1745350407563!5m2!1sen!2sin"></iframe>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- googleMap-end -->
+<!-- contact-area-start -->
+<div class="contact-area ptb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="contact-info">
+                    <h3>Contact info</h3>
+                    <ul>
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <span>Address</span>
+                                Speranza Business Hub, B - 307, Pal Gam Rd, near Raj Victoria, <br>Adajan Gam, Pal Gam, Surat, Gujarat 395009							
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <span>Phone</span>
+                            +91 555 555 0001
+                        </li>
+                        <li>
+                            <i class="fa fa-mobile"></i>
+                            <span>Email</span>
+                            <a href="#">atronica@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="contact-form">
+                    <h3><i class="fa fa-envelope-o"></i>Leave a Message</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="single-form-3">
+                                <form action="#">
+                                    <input type="text" placeholder="Name " />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-form-3">
+                                <form action="#">
+                                    <input type="email" placeholder="Email " />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="single-form-3">
+                        <form action="#">
+                            <textarea name="massage" placeholder="Message" cols="20" rows="3"></textarea>
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </form>
+                    </div>
+                </div>	
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

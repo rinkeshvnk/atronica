@@ -1,0 +1,134 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Cart
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+{% block 'main'%}
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="#">cart </a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="/"><i class="fa fa-angle-right"></i>Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- entry-header-area-start -->
+<div class="entry-header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="entry-header-title">
+                    <h2>Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- entry-header-area-end -->
+<!-- cart-main-area-start -->
+<div class="cart-main-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Image</th>
+                                    <th class="product-name">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                    <th class="product-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in cartdata %}
+                                <tr>
+                                    <td class="product-thumbnail"><a href="#"><img src="{{row.image}}" alt="man" /></a></td>
+                                    <td class="product-name"><a href="#">{{row.title}}</a></td>
+                                    <td class="product-price"><span class="amount">Rs. {{row.price}}</span></td>
+                                    <td class="product-quantity">{{row.qty}}</td>
+                                    <td class="product-subtotal">Rs. {{row.total}}</td>
+                                    <td class="product-remove"><a href="/cart/delete/{{row.cart_id}}"><i class="fa fa-times"></i></a></td>
+                                </tr>
+                               {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8  col-12">
+                    <div class="buttons-cart mb-30">
+                        <ul>
+                            <!-- <li><a href="#">Update Cart</a></li> -->
+                            <li><a href="/shop">Continue Shopping</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4 col-md-4  col-12">
+                    <div class="cart_totals">
+                       
+                        <table>
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Subtotal</th>
+                                    <td>
+                                        <span class="amount">Rs. {{finaltotal}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="shipping">
+                                    <th>Shipping</th>
+                                    <td>
+                                        <span class="amount">Rs. 0.0</span>
+                                    </td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th>Total</th>
+                                    <td>
+                                        <strong>
+                                            <span class="amount">Rs.  {{finaltotal}}</span>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/><br/><br/>
+                        <div class="wc-proceed-to-checkout">
+                            <a href="/checkout">Proceed to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cart-main-area-end -->
+
+{% endblock %}

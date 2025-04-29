@@ -1,0 +1,143 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Register
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+<script>
+  $("#form").validate({
+    rules:
+    {
+      txtfirstname:
+      {
+        required:true
+      },
+      txtlastname:
+      {
+        required:true
+      }
+    },
+    messages:
+    {
+        txtfirstname:
+      {
+        required:"Please enter First Name"
+      },
+      txtlastname:
+      {
+        required:"Please Enter Last Name"
+      }
+    }
+  });
+</script>
+
+{% endblock %}
+
+
+{% block 'main' %}
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="/">Home</a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i>register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- user-login-area-start -->
+<div class="user-login-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="login-title text-center mb-30">
+                    <h2>Sign Up</h2>
+                    <p>Create Your Account<br></p>
+                </div>
+            </div>
+            <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2   col-12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                <form id="form" method="POST" action="/registeruser">
+                    {% csrf_token %}
+                <div class="billing-fields">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6  col-12">
+                            <div class="single-register">
+                                    <label>First Name<span>*</span></label>
+                                    <input class="form-control" type="text" name="txtfirstname"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6  col-12">
+                            <div class="single-register">
+                                    <label>Last Name<span>*</span></label>
+                                    <input class="form-control" type="text"  name="txtlastname"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6  col-12">
+                            <div class="single-register">
+                                    <label>Email Address<span>*</span></label>
+                                    <input class="form-control" type="text"  name="txtemail"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6  col-12">
+                            <div class="single-register">
+                                    <label>Phone<span>*</span></label>
+                                    <input  class="form-control" type="text"  name="txtphone"/>  
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="single-register">
+                            <label>Account password<span>*</span></label>
+                            <input type="text" class="form-control" name="txtpassword" placeholder="Password"/>
+                    </div>
+                    <div class="single-register">
+                       
+                            <label>Confirm password<span>*</span></label>
+                            <input type="text" class="form-control" name="txtconfirmpass" placeholder="Password"/>
+                        
+                    </div>
+                    <!-- <div class="single-register single-register-3">
+                        <input id="rememberme" type="checkbox" name="rememberme" value="forever">
+                        <label class="inline">I agree <a href="#">Terms & Condition</a></label>
+                    </div> -->
+                    <div class="single-register">
+                        <button type="submit" class="btn btn-dark">Register</a>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- user-login-area-end -->
+<!-- brand-area-start -->
+
+{% endblock %}

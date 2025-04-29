@@ -1,0 +1,350 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Home
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+
+{% block 'main' %}
+<!-- slider-area-start -->
+<div class="slider-area">
+    <div id="slider">
+        <img src="{% static 'user_assets/img/slider/1.jpg' %}" alt="slider-img" title="#caption1" />
+        <img src="{% static 'user_assets/img/slider/2.jpg' %}" alt="slider-img" title="#caption2" />
+    </div>
+    <div class="nivo-html-caption" id="caption1" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 d-none d-md-block">
+                    <div class="slider-text wow fadeInDownBig" data-wow-delay=".5s" >
+                        <h1>portable <span>bluetooth</span></h1>
+                        <h2>speaker with <br /> subwoofer</h2>
+                        <p>Professional Portable Bluetooth speakers with <br /> subwoofer <span>USB FM</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nivo-html-caption" id="caption2" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 d-none d-md-block">
+                    <div class="slider-text wow fadeInDownBig" data-wow-delay=".5s" >
+                        <h2>wireless Headphones  <br />reinvented</h2>
+                        <p>The power and performance of both a <span>40mm</span> and <br /><span> 30mm</span> neodymiumdriver in each earcup!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider-area-end -->
+<!-- banner-area-start -->
+<div class="banner-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="single-banner text-center br">
+                    <div class="banner-img phone mb-20">
+                        <a href="#"><img src="{% static 'user_assets/img/banner/1.png' %}" alt="banner" /></a>
+                    </div>
+                    <div class="banner-text">
+                        <h4>Five - star support</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="single-banner text-center br">
+                    <div class="banner-img mb-20 plane">
+                        <a href="#"><img src="{% static 'user_assets/img/banner/2.png' %}" alt="banner" /></a>
+                    </div>
+                    <div class="banner-text">
+                        <h4>Free Shipping</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4  col-12">
+                <div class="single-banner text-center">
+                    <div class="banner-img mb-20 light">
+                        <a href="#"><img src="{% static 'user_assets/img/banner/3.png' %}" alt="banner" /></a>
+                    </div>
+                    <div class="banner-text">
+                        <h4>Socially conscious</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner-area-end -->
+<!-- banner-area-2-start -->
+<div class="banner-area-2 mb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="single-banner-2">
+                    <a href="#"><img src="{% static 'user_assets/img/banner/4.jpg' %}" alt="banner" /></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="single-banner-2">
+                    <a href="#"><img src="{% static 'user_assets/img/banner/5.jpg' %}" alt="banner" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner-area-2-end -->
+<!-- pos_new_product-area-start -->
+<div class="pos_new_product mb-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title mb-30">
+                    <h2><span>n</span>ew arrivals</h2>
+                </div>
+            </div>
+        </div>	
+        <div class="product-active owl-carousel">
+            <!-- single-product-start -->
+            {% for row in productdata %}
+            <div class="single-product">
+                <div class="product-img">
+                    <a href="#">
+                        <img src="{{row.img2}}" alt="product" class="first" />
+                        <img src="{{row.img2}}" alt="product" class="second" />
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3><a href="/productdetail/{{row.product_id}}">{{row.title}}</a></h3>
+                    <div class="product-rating mb-10">
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                    </div>
+                    <div class="product-price">
+                        <ul>
+                            <li class="new-price">Rs. {{row.sell_price}}</li>
+                        </ul>
+                    </div>
+                    <div class="add-to-links mt-15">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <!-- <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#mymodal"><i class="fa fa-eye"></i></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- single-product-end -->
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- pos_new_product-area-end -->
+
+<!-- static-center-area-start -->
+<div class="static-center-area">
+    <img src="{% static 'user_assets/img/banner/6.jpg' %}" alt="banner" />
+    <div class="static-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 d-none d-md-block">
+                    <div class="static-text">
+                        <h3>Wireless Headphones</h3>
+                        <p>Pair and play with your Bluetooth® device with 30 foot range</p>
+                        <p>Dual-mode Adaptive Noise Canceling</p>
+                        <p>Iconic Beats sound</p>
+                        <p>12 hour rechargeable battery with Fuel Gauge</p>
+                        <p>Take hands-free calls with built-in mic</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- static-center-area-end -->
+<!-- most-popular-product-start -->
+<div class="most-popular-product pt-80 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6  col-12 mb-30">
+                <div class="section-title mb-30">
+                    <h2>Audio</h2>
+                </div>
+                <div class="product-active-2 owl-carousel">
+                    <div class="product-total">
+                        {% for r in productcat8 %}
+                        <div class="single-product">
+                            <div class="product-img">
+                                <a href="/productdetail/{{r.product_id}}">
+                                    <img src= "{{r.img1}}"  alt="product" class="first" />
+                                    <img src= "{{r.img2}}" alt="product" class="second" />
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="/productdetail/{{r.product_id}}">{{r.title}}</a></h3>
+                                <div class="product-rating mb-10">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                </div>
+                                <div class="product-price">
+                                    <ul>
+                                        <li class="new-price">Rs. {{r.sell_price}}</li>
+                                    </ul>
+                                </div>
+                                <div class="add-to-links mt-15">
+                                    <ul>
+                                        <li><a href="/productdetail/{{r.product_id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <!-- <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#mymodal"><i class="fa fa-eye"></i></a></li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6  col-12 mb-30">
+                <div class="section-title mb-30">
+                    <h2>Laptop</h2>
+                </div>
+                <div class="product-active-2 owl-carousel">
+                    <div class="product-total">
+                        {% for r in productcat9 %}
+                        <div class="single-product">
+                            <div class="product-img">
+                                <a href="/productdetail/{{r.product_id}}">
+                                    <img src="{{r.img1}}" alt="product" class="first" />
+                                    <img src="{{r.img2}}" alt="product" class="second" />
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="/productdetail/{{r.product_id}}">{{r.title}}</a></h3>
+                                <div class="product-rating mb-10">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                </div>
+                                <div class="product-price">
+                                    <ul>
+                                        <li class="new-price">Rs. {{r.sell_price}}</li>
+                                    </ul>
+                                </div>
+                                <div class="add-to-links mt-15">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <!-- <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#mymodal"><i class="fa fa-eye"></i></a></li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6  col-12 mb-30">
+                <div class="section-title mb-30">
+                    <h2>Smartphones</h2>
+                </div>
+                <div class="product-active-2 owl-carousel">
+                    <div class="product-total">
+                        {% for r in productcat10 %}
+                        <div class="single-product">
+                            <div class="product-img">
+                                <a href="/productdetail/{{r.product_id}}">
+                                    <img src="{{r.img1}}" alt="product" class="first" />
+                                    <img src="{{r.img2}}" alt="product" class="second" />
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="/productdetail/{{r.product_id}}">{{r.title}}</a></h3>
+                                <div class="product-rating mb-10">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                </div>
+                                <div class="product-price">
+                                    <ul>
+                                        <li class="new-price">Rs. {{r.sell_price}}</li>
+                                    </ul>
+                                </div>
+                                <div class="add-to-links mt-15">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <!-- <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#mymodal"><i class="fa fa-eye"></i></a></li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- most-popular-product-end -->
+<!-- blog-area-start -->
+<div class="blog-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title mb-30">
+                    <h2>
+                        <span>E</span>lectrician
+                    </h2>	
+                </div>
+            </div>
+            <div class="blog-active owl-carousel ">
+                {% for row in electricaldata %}
+                <div class="single-blog">
+                    <div class="blog-img">
+                        <a href="#"><img src="{{row.img}}" style="height: 300px;width: 100%;"  alt="blog" /></a>
+                    </div>
+                    <div class="content-inner">
+                        <div class="date-smart">
+                            <span >{{row.name}}</span>
+                            
+                        </div>
+                        <div class="views"></i>
+                            Rs. {{row.elec_price}}
+                        </div>
+                    </div>
+                    <div class="blog-text">
+                        <h4><a href="#">{{row.aboutelectrician}}</a></h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- blog-area-end -->
+
+ {% endblock %}

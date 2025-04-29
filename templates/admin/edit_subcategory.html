@@ -1,0 +1,76 @@
+{% extends 'admin/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Sub Category Add
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}
+{% endblock %}
+
+{% block 'main' %}
+
+<div class="dashboard-main-body">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+  <h6 class="fw-semibold mb-0">Manage Sub Category</h6>
+  <ul class="d-flex align-items-center gap-2">
+    <li class="fw-medium">
+      <a href="/customadmin/dashboard" class="d-flex align-items-center gap-1 hover-text-primary">
+        <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>-</li>
+    <li class="fw-medium">Edit Sub Category</li>
+  </ul>
+</div>
+    
+    <div class="row gy-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+                <h5 class="card-title mb-0">Edit Sub Category</h5>
+                <a href="/customadmin/subcategory/view" class="btn btn-neutral-900 text-base radius-8 px-20 py-11">View</a>
+            </div>
+          </div>
+          <div class="card-body">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <form method="POST" action="/customadmin/subcategory/update/{{data.subcategory_id}}">
+              {% csrf_token %}
+              <div class="row gy-3">
+                <div class="col-12">
+                    <label class="form-label">Category Name</label>
+                    <select class="form-control" name="txtcat">
+                        <option>Please Select Category</option>
+                        {% for row in categorydata %}
+                        <option {% if data.category_id.category_id == row.category_id %} selected {% endif %} value="{{row.category_id}}">{{row.category_name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-12">
+                <label class="form-label">Sub Category Name</label>
+                <input type="text" value="{{data.subcategory_name}}"  name="txtsubcatname" class="form-control" >
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary-600">Update</button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+{% endblock %}

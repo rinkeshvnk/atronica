@@ -1,0 +1,90 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+About
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+
+{% block 'main' %}
+<!-- breadcrumb-area-start -->
+<div class="breadcrumb-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h3><a href="#">about</a></h3>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-home"></i></a></li>
+                        <li class="active"><a href="/"><i class="fa fa-angle-right"></i>Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area-end -->
+<!-- about-main-area-start -->
+<div class="about-main-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-7  col-12">
+                <div class="about-img">
+                    <a href="#"><img src="{% static 'user_assets/img/about.jpeg' %}" alt="man" /></a>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5  col-12">
+                <div class="about-content">
+                    <h3>Why<span>We are?</span></h3>
+                    <p>In today’s world, technology changes faster than ever—new devices launch every day, and for many people, it can be overwhelming to keep up. That’s why we started Atronica to create a space where people can find not only the best electronics, but also guidance, support, and genuine customer service.
+                        
+                        We want our customers to feel confident and excited—not confused—when shopping for electronics. Whether it's a first-time smartphone user, a gamer looking to upgrade, or a small business needing reliable tech—we’re here to help make the right choice, every time.
+                        
+                        At our core, we exist to serve our community, empower people through technology, and create lasting relationships built on trust, transparency, and value.</p>
+                    <ul>
+                        <li><i class="fa fa-check"></i>Wide Product Range</a></li>
+                        <li><i class="fa fa-check"></i>Genuine Brands Only</a></li>
+                        <li><i class="fa fa-check"></i>Extensive Product Categories</a></li>
+                        <li><i class="fa fa-check"></i>Detailed Product Info</a></li>
+                        <li><i class="fa fa-check"></i> Customer Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about-main-area-end -->
+<!-- our-mission-area-start -->
+<div class="our-mission-area ptb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4  col-12">
+                <div class="single-misson">
+                    <h3>Why<span>We do?</span></h3>
+                    <p>We believe technology should improve lives—not complicate them. That’s why we’re here: to help people find the right electronics, at the right price, with support they can trust. Whether it’s simplifying your work, upgrading your entertainment, or staying connected with loved ones—we’re passionate about making tech work for you.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4  col-12">
+                <div class="single-misson">
+                    <h3>Our<span>Mission</span></h3>
+                    <p>At Atronica, our mission is to make the latest technology accessible, affordable, and easy to use for everyone. We’re committed to offering top-quality electronics, expert support, and exceptional service—so you can stay connected, productive, and entertained.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4  col-12">
+                <div class="single-misson">
+                    <h3>Our<span>Vision</span></h3>
+                    <p>To be a trusted leader in the electronics retail space—empowering individuals and businesses with cutting-edge technology, outstanding value, and a seamless shopping experience both in-store and online.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- our-mission-area-end -->
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'user/master.html' %}
+{% load static  %}
+{% block 'title' %}
+My Order
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}{% endblock %}
+
+{% block 'main' %}
+<div class="cart-main-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wishlist-content">
+                    <form action="#">
+                        <div class="wishlist-title">
+                            <h2>My Order</h2>
+                        </div>
+                        <div class="wishlist-table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">paytype</th>
+                                        <th class="product-name">Transaction No</th>
+                                        <th class="product-price">Total Payment </th>
+                                        <th class="product-stock-stauts">Status </th>
+                                        <th class="product-subtotal">View Order </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in orderdata %}
+                                    <tr>
+                                        <td class="product-thumbnail">{{row.paytype}}</a></td>
+                                        <td class="product-name"><a href="#">{{row.transaction_number}}</a></td>
+                                        <td class="product-price"><span class="amount">Rs. {{ row.total_payment }}</span></td>
+                                        <td class="product-stock-status"><span class="wishlist-in-stock">{{row.status}}</span></td>
+                                        <td class="product-add-to-cart"><a href="/myitem/{{row.order_id}}"> View</a>
+                                        
+                                            {% if row.status == 'pending' %}
+                                            <a class="btn btn-danger" style="background-color: red;" href="/changestatus/{{row.order_id}}"> Cancel</a>
+                                            {% endif %}
+                                           
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="wishlist-share">
+                                                <h4 class="wishlist-share-title">Share on:</h4>
+                                                <ul>
+                                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a class="email" href="#"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

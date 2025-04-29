@@ -1,0 +1,225 @@
+{% extends 'admin/master.html' %}
+{% load static  %}
+{% block 'title' %}
+Product Add
+{% endblock %}
+
+
+{% block 'css' %}{% endblock %}
+
+
+{% block 'js' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+<script>
+  $("#form").validate({
+    rules:
+    {
+      txtproductstitle:
+      {
+        required:true
+      },
+      txtspecification:
+      {
+        required:true
+      },
+      txtdescription:
+      {
+        required:true
+      },
+      txtretailprice:
+      {
+        required:true
+      },
+      txtsellprice:
+      {
+        required:true
+      },
+      image1:
+      {
+        required:true
+      },
+      image2:
+      {
+        required:true
+      },
+      image3:
+      {
+        required:true
+      },
+      txtvideourl:
+      {
+        required:true
+      },
+      
+    },
+    messages:
+    {
+      txtproductstitle:
+      {
+        required:"Please enter product name"
+      },
+      txtspecification:
+      {
+        required:"Please enter specification logo"
+      },
+      txtdescription:
+      {
+        required:"Please enter description logo"
+      },
+      txtretailprice:
+      {
+        required:"Please enter description logo"
+      },
+      txtsellprice:
+      {
+        required:"Please enter description logo"
+      },
+      image1:
+      {
+        required:"Please enter description logo"
+      },
+      image2:
+      {
+        required:"Please enter description logo"
+      },
+      image3:
+      {
+        required:"Please enter description logo"
+      },
+      txtvideourl:
+      {
+        required:"Please enter description logo"
+      }
+    }
+  });
+</script>
+{% endblock %}
+
+{% block 'main' %}
+<div class="dashboard-main-body">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+  <h6 class="fw-semibold mb-0">Add Products</h6>
+  <ul class="d-flex align-items-center gap-2">
+    <li class="fw-medium">
+      <a href="/customadmin/dashboard" class="d-flex align-items-center gap-1 hover-text-primary">
+        <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>-</li>
+    <li class="fw-medium">Add Products</li>
+  </ul>
+</div>
+    
+    <div class="row gy-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+                <h5 class="card-title mb-0">Add Products</h5>
+                <a href="/customadmin/products/view" class="btn btn-neutral-900 text-base radius-8 px-20 py-11">View</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <form method="POST" id="form" enctype="multipart/form-data" action="/customadmin/products/insert">
+              {% csrf_token %}
+              <div class="row gy-3">
+                <div class="col-12">
+                    <label class="form-label">Sub Category</label>
+                    <select class="form-control" name="txtsubcat">
+                      {% for row in subcat %}
+                        <option value="{{row.subcategory_id }}">{{row.subcategory_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Company</label>
+                    <select class="form-control" name="txtcompany">
+                      {% for row in company %}
+                      <option value="{{row.company_id }}">{{row.company_name}}</option>
+                      {% endfor %}
+                    </select>
+                </div>    
+          
+                <div class="col-12">
+                  <label class="form-label">Title</label>
+                  <input type="text" name="txtproductstitle" id="txtproductstitle" class="form-control" >
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Specification</label>
+                  <textarea name="txtspecification" id="txtspecification" class="form-control" rows="4" cols="50" placeholder="Enter a Specification..."></textarea>
+                </div>  
+
+                <div class="col-12">
+                  <label class="form-label">Description</label>
+                  <textarea name="txtdescription" id="txtdescription" class="form-control" rows="4" cols="50" placeholder="Enter a Description..."></textarea>
+                </div> 
+              
+                <div class="col-12">
+                  <label class="form-label">Retail Price</label>
+                  <input type="text" name="txtretailprice" id="txtretailprice" class="form-control" >
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Sell Price</label>
+                  <input type="text" name="txtsellprice" id="txtsellprice" class="form-control" >
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Img 1</label>
+                  <input type="file" name="image1" class="form-control"/>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Img 2</label>
+                  <input type="file" name="image2" class="form-control"/>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Img 3</label>
+                  <input type="file" name="image3" class="form-control"/>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Video url</label>
+                  <input type="text" name="txtvideourl" id="txtvideourl" class="form-control" >
+                </div>
+              
+                <div class="col-12">
+                  <label class="form-label">Type</label>
+                  <select class="form-control" name="txttype">
+                    <option>Simple</option>
+                    <option>Variable</option>
+                  </select>
+                </div>   
+
+                <div class="col-12">
+                  <label class="form-label">Packaging</label>
+                  <input type="text" name="txtpackaging" class="form-control" >
+                </div>
+              
+                <div class="col-12">
+                  <label class="form-label">Is Active</label>
+                  <select class="form-control" name="txtactive">
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>    
+              
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary-600">Submit</button>
+                </div>
+
+              </div>
+            </form>  
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}

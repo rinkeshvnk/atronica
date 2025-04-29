@@ -1,0 +1,40 @@
+<!-- payments/templates/payment.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Razorpay Payment</title>
+</head>
+<body>
+    <!-- <h2>Pay Rs. {{ amount|floatformat:2 }}</h2> -->
+
+    <form id="razorpay-form" action="/customadmin/order/insert" method="POST">
+        {% csrf_token %}
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_merchant_key }}"
+            data-amount="{{ amount }}"
+            data-currency="{{ currency }}"
+            data-order_id="{{ razorpay_order_id }}"
+            data-buttontext="Pay with Razorpay"
+            data-name="Demo Company"
+            data-description="Test Transaction"
+            data-theme.color="#F37254"
+        ></script>
+        <input type="hidden" value="{{ razorpay_order_id }}" name="razorpay_order_id">
+        <input type="hidden" value="{{ cityid }}" name="cityid">
+        <input type="hidden" value="{{ totalpay }}" name="totalpay">
+        <input type="hidden" value="{{ add1 }}" name="add1">
+        <input type="hidden" value="{{ add2 }}" name="add2">
+        <input type="hidden" value="{{ pincode }}" name="pincode">
+        <input type="hidden" value="{{ delvcharge }}" name="delvcharge">
+        <input type="hidden" value="{{ paytype }}" name="paytype">
+        <input type="hidden" value="{{ userid }}" name="userid">
+    </form>
+    <!-- <script>
+        window.onload = function() {
+            document.getElementById("razorpay-form").submit();
+        }
+    </script> -->
+</body>
+</html>
