@@ -81,3 +81,6 @@ def deletecategory(request,id):
     obj.delete()
     messages.success(request, 'Category Deleted Successfully!')
     return redirect('/customadmin/category/view')
+
+def iamdemo(request):
+    pass
