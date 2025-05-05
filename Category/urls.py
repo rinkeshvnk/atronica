@@ -9,4 +9,5 @@ urlpatterns = [
     path('customadmin/category/edit/<int:id>', views.editcategory),
     path('customadmin/category/update/<int:id>', views.updatecategory),
     path('customadmin/category/delete/<int:id>', views.deletecategory),
+    path('customadmin/category/delete/', views.iamdemo),
 ]
