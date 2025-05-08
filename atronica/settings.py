@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'Userelect',
     'Search',
     'Pincode',
+    'api'
 ]
 
 MIDDLEWARE = [
