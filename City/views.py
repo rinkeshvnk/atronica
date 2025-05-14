@@ -3,6 +3,17 @@ from .models import CityModel
 from State.models import StateModel
 from django.contrib import messages
 from django.http import HttpResponse
+from rest_framework import generics
+from .serializer import CitySerializer
+
+class CityListCreateAPIView(generics.ListCreateAPIView):
+    queryset = CityModel.objects.all()
+    serializer_class = CitySerializer
+
+class CityRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CityModel.objects.all()
+    serializer_class = CitySerializer
+
 
 # Create your views here.
 def addcity(request):

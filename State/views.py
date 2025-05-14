@@ -2,7 +2,17 @@ from django.shortcuts import render,redirect
 from .models import StateModel
 from django.contrib import messages
 from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import StateSerializer
 
+class StateListCreateAPIView(generics.ListCreateAPIView):
+    queryset = StateModel.objects.all()
+    serializer_class = StateSerializer
+
+class StateRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = StateModel.objects.all()
+    serializer_class = StateSerializer
+    
 # Create your views here.
 def addstate(request):
     return render(request,'admin/add_state.html')
